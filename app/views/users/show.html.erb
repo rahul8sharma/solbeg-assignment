@@ -1,1 +1,19 @@
-<%= @user.email %>
+<p id="notice"><%= notice %></p>
+
+<h2 style="text-align:center">User Profile Card</h2>
+
+<div class="card">
+  <% if @user.avatar.present? %>
+    <img src="<%= @user.avatar.url %>" alt="<%= @user.name %>" style="width:100%">
+  <% end %>
+  <h1><%= @user.name %> </h1>
+  <p class="title">CEO & Founder, Example</p>
+  <p>Harvard University</p>
+  <p><button>Contact</button></p>
+  <%= link_to 'Edit', edit_user_path(@user) %>
+  <%
+=begin%>
+ <%= link_to 'Back', users_path %> 
+<%
+=end%>
+</div>

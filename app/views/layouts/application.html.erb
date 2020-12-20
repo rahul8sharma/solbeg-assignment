@@ -10,8 +10,16 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <% if user_signed_in? %>
+    <div class="header">
+      <div class="header-right">
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      </div>
+    </div>
+  <% end %>
+
+  <div style="padding-left:20px">
     <%= yield %>
+  </div>
   </body>
 </html>
