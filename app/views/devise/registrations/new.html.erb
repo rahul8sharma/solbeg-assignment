@@ -1,0 +1,71 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <%= f.fields :address, model: f.object.address do |field| %>
+    <div>
+      <%= field.label :address_line %>
+      <%= field.text_field :address_line, value: "#{field.options['address_line']}" %>
+    </div>
+
+    <div>
+      <%= field.label :street %>
+      <%= field.text_field :street, value: "#{field.options['street']}" %>
+    </div>
+
+    <div>
+      <%= field.label :city %>
+      <%= field.text_field :city, value: "#{field.options['city']}" %>
+    </div>
+
+    <div>
+      <%= field.label :state %>
+      <%= field.text_field :state, value: "#{field.options['state']}" %>
+    </div>
+
+    <div>
+      <%= field.label :pin_code %>
+      <%= field.number_field :pin_code, value: "#{field.options['pin_code']}" %>
+    </div>
+
+    <div>
+      <%= field.label :landmark %>
+      <%= field.text_field :landmark, value: "#{field.options['landmark']}" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
