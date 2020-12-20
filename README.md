@@ -5,20 +5,16 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Version
+    ruby '2.5.3' | 'rails', '~> 5.2.3'
 
-* System dependencies
+* Heroku URL
+    https://shielded-reaches-77270.herokuapp.com
 
-* Configuration
+* Setup
+    Enter bundle
 
 * Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+    Enter rake db:setup
 
 * ...
