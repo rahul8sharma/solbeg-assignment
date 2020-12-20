@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :is_admin?, only: [:index]
 
   # GET /users
   # GET /users.json
@@ -60,5 +61,11 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:avatar, address: [:phone_number, :address_line, :street, :city, :state, :pin_code, :landmark])
+    end
+
+    def is_admin?
+      # check if user is a admin
+      # if not admin then redirect to where ever you want 
+      redirect_to root_path unless current_user.is_admin 
     end
 end

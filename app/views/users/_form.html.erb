@@ -11,10 +11,12 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :avatar %>
-    <%= form.file_field :avatar %>
-  </div>
+  <% if !is_current_user_admin? %>
+    <div>
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar %>
+    </div>
+  <% end %>
 
   <%= form.fields :address, model: form.object.address do |field| %>
     <div>
@@ -22,35 +24,37 @@
       <%= field.text_field :phone_number, value: "#{field.options['phone_number']}" %>
     </div>
 
-    <div>
-      <%= field.label :address_line %>
-      <%= field.text_field :address_line, value: "#{field.options['address_line']}" %>
-    </div>
+    <% if !is_current_user_admin? || current_user.id != @user.id %>
+      <div>
+        <%= field.label :address_line %>
+        <%= field.text_field :address_line, value: "#{field.options['address_line']}" %>
+      </div>
 
-    <div>
-      <%= field.label :street %>
-      <%= field.text_field :street, value: "#{field.options['street']}" %>
-    </div>
+      <div>
+        <%= field.label :street %>
+        <%= field.text_field :street, value: "#{field.options['street']}" %>
+      </div>
 
-    <div>
-      <%= field.label :city %>
-      <%= field.text_field :city, value: "#{field.options['city']}" %>
-    </div>
+      <div>
+        <%= field.label :city %>
+        <%= field.text_field :city, value: "#{field.options['city']}" %>
+      </div>
 
-    <div>
-      <%= field.label :state %>
-      <%= field.text_field :state, value: "#{field.options['state']}" %>
-    </div>
+      <div>
+        <%= field.label :state %>
+        <%= field.text_field :state, value: "#{field.options['state']}" %>
+      </div>
 
-    <div>
-      <%= field.label :pin_code %>
-      <%= field.number_field :pin_code, value: "#{field.options['pin_code']}" %>
-    </div>
+      <div>
+        <%= field.label :pin_code %>
+        <%= field.number_field :pin_code, value: "#{field.options['pin_code']}" %>
+      </div>
 
-    <div>
-      <%= field.label :landmark %>
-      <%= field.text_field :landmark, value: "#{field.options['landmark']}" %>
-    </div>
+      <div>
+        <%= field.label :landmark %>
+        <%= field.text_field :landmark, value: "#{field.options['landmark']}" %>
+      </div>
+    <% end %>
   <% end %>
 
   <div class="actions">

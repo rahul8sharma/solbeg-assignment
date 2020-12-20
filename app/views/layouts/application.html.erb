@@ -13,6 +13,9 @@
     <% if user_signed_in? %>
     <div class="header">
       <div class="header-right">
+        <% if is_current_user_admin? %>
+          <%= link_to "Users", users_path %>
+        <% end %>
         <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
       </div>
     </div>

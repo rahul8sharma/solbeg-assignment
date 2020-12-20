@@ -7,6 +7,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   mount_uploader :avatar, AvatarUploader
-
-  # serialize :address, JSON
 end
